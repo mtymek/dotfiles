@@ -3,7 +3,11 @@ if command -v starship &> /dev/null; then
 fi
 
 [ -s "/Users/mat/.bun/_bun" ] && source "/Users/mat/.bun/_bun"
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if command -v brew &> /dev/null; then
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # load module for list-style selection
 zmodload zsh/complist
