@@ -1,3 +1,10 @@
+# History
+setopt SHARE_HISTORY 
+HISTFILE=~/.history
+HISTSIZE=10000
+SAVEHIST=50000
+
+# Prompt
 if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
@@ -19,8 +26,8 @@ zstyle ':completion:*' menu yes select
 # you want to trigger search on autocomplete items
 # so we'll bind some key to trigger history-incremental-search-forward function
 bindkey -M menuselect '?' history-incremental-search-forward
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
 # Exports
 export EDITOR=/opt/homebrew/bin/nvim
@@ -49,9 +56,8 @@ alias .....="cd ../../../..; pwd"
 alias ......="cd ../../../../..; pwd"
 
 # Eza
-alias l="eza -l --icons --git -a"
-alias ls="eza"
+alias l="eza --group-directories-first -l --icons --git -a"
+alias ls="eza --group-directories-first"
 alias lt="eza --tree --level=2 --long --icons --git"
-alias ltree="eza --tree --level=2  --icons --git"
-
+alias ltree="eza --tree --level=2 --long --icons --git"
 
