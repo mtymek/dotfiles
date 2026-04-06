@@ -1,5 +1,6 @@
 # History
 setopt SHARE_HISTORY 
+setopt PROMPT_SUBST
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=50000
@@ -15,6 +16,12 @@ if command -v brew &> /dev/null; then
 else
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
+
+# Completion
+autoload -Uz compinit && compinit
+
+source <(COMPLETE=zsh jj)
+source <(fzf --zsh)
 
 # load module for list-style selection
 zmodload zsh/complist
