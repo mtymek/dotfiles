@@ -37,7 +37,8 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
 # Exports
-export EDITOR=/opt/homebrew/bin/nvim
+export EDITOR=nvim
+export SUDO_EDITOR="$EDITOR"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:/Users/mat/.cargo/bin:$HOME/.bin:$HOME/go/bin:$PATH"
 
@@ -67,4 +68,40 @@ alias l="eza --group-directories-first -l --icons --git -a"
 alias ls="eza --group-directories-first"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2 --long --icons --git"
+
+# Fzf helpers
+#if [[ "$TERM" == "xterm-kitty" ]]; then
+  alias ff="fzf --preview 'case \$(file --mime-type -b {}) in image/*) kitty icat --clear --transfer-mode=memory --stdin=no --place=\${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@0x0 {} ;; *) bat --style=numbers --color=always {} ;; esac'"
+#else
+#  alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+#fi
+alias eff='$EDITOR "$(ff)"'
+sff() { if [ $# -eq 0 ]; then echo "Usage: sff <destination> (e.g. sff host:/tmp/)"; return 1; fi; local file; file=$(find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2- | ff) && [ -n "$file" ] && scp "$file" "$1"; }
+
+# Zoxide (smart cd)
+if command -v zoxide &> /dev/null; then
+  alias cd="zd"
+  zd() {
+    if (( $# == 0 )); then
+      builtin cd ~ || return
+    elif [[ -d $1 ]]; then
+      builtin cd "$1" || return
+    else
+      if ! z "$@"; then
+        echo "Error: Directory not found"
+        return 1
+      fi
+      printf "\U000F17A9 "
+      pwd
+    fi
+  }
+fi
+
+# Tools
+alias c='opencode'
+alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
+n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
+open() (
+  xdg-open "$@" >/dev/null 2>&1 &
+)
 
