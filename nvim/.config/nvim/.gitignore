@@ -1,0 +1,4 @@
+lua/
+plugin/
+.stowlocal-ignores
+lazy-lock.json

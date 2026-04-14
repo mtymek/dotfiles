@@ -104,7 +104,3 @@ n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
 open() (
   xdg-open "$@" >/dev/null 2>&1 &
 )
-
-
-# opencode
-export PATH=/home/mat/.opencode/bin:$PATH
