@@ -1,6 +1,6 @@
 add_newline = true
 command_timeout = 200
-format = "[$directory$git_branch$git_status$custom]($style)$character"
+format = "[$hostname$directory$git_branch$git_status$custom]($style)$character"
 
 [character]
 error_symbol = "[✗](bold cyan)"
@@ -51,8 +51,14 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
     raw_escape_sequence("\x1b[1;32m") ++ coalesce(
       truncate_end(29, description.first_line(), "…"),
       "(no description set)",
-    ) ++ raw_escape_sequence("\x1b[0m"),
+    ) ++     raw_escape_sequence("\x1b[0m"),
   )
 '
 '''
+
+[hostname]
+ssh_only = false
+ssh_symbol = "🌐 "
+style = "bold blue"
+format = "[$ssh_symbol$hostname]($style) "
 
