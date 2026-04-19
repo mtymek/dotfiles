@@ -40,7 +40,8 @@ bindkey "^[[B" history-search-forward
 export EDITOR=nvim
 export SUDO_EDITOR="$EDITOR"
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:/Users/mat/.cargo/bin:$HOME/.bin:$HOME/go/bin:$PATH"
+export OMARCHY_PATH=$HOME/.local/share/omarchy
+export PATH="$BUN_INSTALL/bin:/Users/mat/.cargo/bin:$HOME/.bin:$HOME/go/bin:$OMARCHY_PATH/bin:$HOME/.local/bin:$PATH"
 
 # Aliases
 
