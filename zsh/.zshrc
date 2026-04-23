@@ -81,6 +81,7 @@ sff() { if [ $# -eq 0 ]; then echo "Usage: sff <destination> (e.g. sff host:/tmp
 
 # Zoxide (smart cd)
 if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
   alias cd="zd"
   zd() {
     if (( $# == 0 )); then
