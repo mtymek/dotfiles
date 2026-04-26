@@ -54,6 +54,8 @@ alias dce="docker compose exec"
 alias g="git"
 alias gc="git commit"
 alias gs="git status -s"
+alias gch="git checkout"
+alias gp="git push"
 alias gpu="git pull origin"
 alias gl="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
 
@@ -68,7 +70,6 @@ alias ......="cd ../../../../..; pwd"
 alias l="eza --group-directories-first -l --icons --git -a"
 alias ls="eza --group-directories-first"
 alias lt="eza --tree --level=2 --long --icons --git"
-alias ltree="eza --tree --level=2 --long --icons --git"
 
 # Fzf helpers
 #if [[ "$TERM" == "xterm-kitty" ]]; then
