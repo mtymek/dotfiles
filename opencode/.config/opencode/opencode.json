@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "mcp": {
+    "atlassian": {
+      "type": "local",
+      "command": [
+        "${HOME}/.local/bin/mcp-atlassian-wrapper"
+      ],
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# MCP Atlassian wrapper script
+# Loads secrets from ~/.config/opencode/.env.atlassian
+# so they don't need to be stored in opencode.json
+
+ENV_FILE="${HOME}/.config/opencode/.env.atlassian"
+
+if [ -f "$ENV_FILE" ]; then
+  set -a
+  # shellcheck source=/dev/null
+  source "$ENV_FILE"
+  set +a
+else
+  echo "Warning: $ENV_FILE not found. MCP Atlassian may fail to authenticate." >&2
+fi
+
+# Run the actual MCP server
+exec uvx mcp-atlassian
