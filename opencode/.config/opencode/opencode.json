@@ -5,7 +5,7 @@
     "atlassian": {
       "type": "local",
       "command": [
-        "${HOME}/.local/bin/mcp-atlassian-wrapper"
+        "mcp-atlassian-wrapper"
       ],
       "enabled": false
     }
