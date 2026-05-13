@@ -101,6 +101,10 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # Tools
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 alias c='opencode'
 alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
 n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
