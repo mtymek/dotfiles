@@ -89,6 +89,14 @@
     "signal": 8,
     "return-type": "json",
   },
+  "custom/vpn": {
+    "format": "{}",
+    "interval": 5,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/vpn-status.sh",
+    "on-click": "~/.config/waybar/scripts/vpn-toggle.sh",
+    "signal": 9,
+  },
 
   // -----------------------------------------------------
   // System: stats + sensors
@@ -248,7 +256,7 @@
       "children-class": "system-group-item",
       "transition-left-to-right": false,
     },
-    "modules": ["custom/system-expand-icon", "network", "memory", "temperature", "battery", "bluetooth", "pulseaudio", "custom/voxtype"],
+    "modules": ["custom/system-expand-icon", "network", "custom/vpn", "memory", "temperature", "battery", "bluetooth", "pulseaudio", "custom/voxtype"],
   },
   "custom/system-expand-icon": {
     "format": "",

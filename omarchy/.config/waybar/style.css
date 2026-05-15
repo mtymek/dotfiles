@@ -135,7 +135,8 @@ window#waybar {
 #memory,
 #network,
 #battery,
-#custom-siz {
+#custom-siz,
+#custom-vpn {
     transition:
         padding 0.18s ease,
         opacity 0.18s ease;
@@ -242,6 +243,7 @@ window#waybar {
 .system-group-item,
 .system-group-item > *,
 .modules-left #network,
+.modules-left #custom-vpn,
 .modules-left #memory,
 .modules-left #bluetooth,
 .tray-group-item {
@@ -424,6 +426,14 @@ tooltip {
 
 #network {
     color: @base05;
+}
+
+#custom-vpn {
+    color: @base05;
+}
+
+#custom-vpn.active {
+    color: #a6e3a1;
 }
 
 #memory {

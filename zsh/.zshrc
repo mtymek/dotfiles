@@ -41,7 +41,7 @@ export EDITOR=nvim
 export SUDO_EDITOR="$EDITOR"
 export BUN_INSTALL="$HOME/.bun"
 export OMARCHY_PATH=$HOME/.local/share/omarchy
-export PATH="$BUN_INSTALL/bin:/Users/mat/.cargo/bin:$HOME/.bin:$HOME/go/bin:$OMARCHY_PATH/bin:$HOME/.local/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$HOME/.cargo/bin:$HOME/.bin:$HOME/go/bin:$OMARCHY_PATH/bin:$HOME/.local/bin:$PATH"
 
 # Aliases
 
@@ -58,6 +58,9 @@ alias gch="git checkout"
 alias gp="git push"
 alias gpu="git pull origin"
 alias gl="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+
+# Jujutsu
+alias jjsync='jj git fetch && jj abandon "divergent() & mutable()" && jj rebase -s "roots(mutable())" -d "stage@origin"'
 
 # Dirs
 alias ..="cd .."
