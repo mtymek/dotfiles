@@ -48,3 +48,22 @@ OpenCode configuration for AI-assisted development.
 **Portability:**
 The configuration is fully portable across machines. Just clone the repo and run `stow opencode` on any machine with OpenCode installed.
 
+### herdr
+
+[Herdr](https://herdr.dev) configuration — terminal workspace manager for AI coding agents.
+
+**Features:**
+- Enriched, commented `config.toml` (full option reference from `herdr --default-config`)
+- Active settings limited to personal preferences (`onboarding = false`, `show_agent_labels_on_pane_borders = false`)
+- Runtime files (logs, sockets, session state) kept out of version control
+
+**Setup:**
+```bash
+stow herdr
+```
+This symlinks `~/.config/herdr/config.toml` into place. After editing, reload the running server with `herdr server reload-config`.
+
+**Files:**
+- `config.toml` - Version controlled, fully commented option reference
+- `.gitignore` - Excludes Herdr runtime files (`*.log`, `*.sock`, `release-notes.json`, `session.json`)
+

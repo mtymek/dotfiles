@@ -1,0 +1,5 @@
+# Herdr runtime files (machine-local, never committed)
+*.log
+*.sock
+release-notes.json
+session.json
