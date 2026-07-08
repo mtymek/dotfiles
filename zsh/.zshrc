@@ -10,7 +10,7 @@ if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
-[ -s "/Users/mat/.bun/_bun" ] && source "/Users/mat/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 if command -v brew &> /dev/null; then
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
@@ -53,6 +53,9 @@ alias dce="docker compose exec"
 # Git
 alias g="git"
 alias gc="git commit"
+alias gcm="git commit -m"
+alias gcam="git commit -a -m"
+alias gcad="git commit -a --amend"
 alias gs="git status -s"
 alias gch="git checkout"
 alias gp="git push"
@@ -72,14 +75,16 @@ alias ......="cd ../../../../..; pwd"
 # Eza
 alias l="eza --group-directories-first -l --icons --git -a"
 alias ls="eza --group-directories-first"
+alias lsa="ls -a"
 alias lt="eza --tree --level=2 --long --icons --git"
+alias lta="lt -a"
 
 # Fzf helpers
-#if [[ "$TERM" == "xterm-kitty" ]]; then
+if [[ "$TERM" == "xterm-kitty" ]]; then
   alias ff="fzf --preview 'case \$(file --mime-type -b {}) in image/*) kitty icat --clear --transfer-mode=memory --stdin=no --place=\${FZF_PREVIEW_COLUMNS}x\${FZF_PREVIEW_LINES}@0x0 {} ;; *) bat --style=numbers --color=always {} ;; esac'"
-#else
-#  alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
-#fi
+else
+  alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+fi
 alias eff='$EDITOR "$(ff)"'
 sff() { if [ $# -eq 0 ]; then echo "Usage: sff <destination> (e.g. sff host:/tmp/)"; return 1; fi; local file; file=$(find . -type f -printf '%T@\t%p\n' | sort -rn | cut -f2- | ff) && [ -n "$file" ] && scp "$file" "$1"; }
 
@@ -109,8 +114,19 @@ if command -v mise &> /dev/null; then
 fi
 
 alias c='opencode'
-alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
+alias cx='printf "\033[2J\033[3J\033[H" && claude --permission-mode bypassPermissions'
+alias r='rails'
+alias t='tmux attach || tmux new -s Work'
+alias decompress='tar -xzf'
 n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
 open() (
   xdg-open "$@" >/dev/null 2>&1 &
 )
+
+# Omarchy env + shell-agnostic functions (vendor, read-only)
+export BAT_THEME=ansi
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+source "$OMARCHY_PATH/default/bash/fns/compression"
+source "$OMARCHY_PATH/default/bash/fns/tmux"
+source "$OMARCHY_PATH/default/bash/fns/worktrees"
