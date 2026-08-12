@@ -40,8 +40,17 @@ bindkey "^[[B" history-search-forward
 export EDITOR=nvim
 export SUDO_EDITOR="$EDITOR"
 export BUN_INSTALL="$HOME/.bun"
-export OMARCHY_PATH=$HOME/.local/share/omarchy
+if [[ -f /etc/omarchy.conf ]]; then
+  source /etc/omarchy.conf
+  export OMARCHY_PATH="${OMARCHY_PATH:-/usr/share/omarchy}"
+else
+  export OMARCHY_PATH=/usr/share/omarchy
+fi
 export PATH="$BUN_INSTALL/bin:$HOME/.cargo/bin:$HOME/.bin:$HOME/go/bin:$OMARCHY_PATH/bin:$HOME/.local/bin:$PATH"
+
+# aws-vault: prompt for MFA in the terminal instead of via zenity GUI dialog
+# (zenity fails with "exit status 1" when DISPLAY/WAYLAND_DISPLAY are unset)
+export AWS_VAULT_PROMPT=terminal
 
 # Aliases
 
@@ -113,8 +122,8 @@ if command -v mise &> /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
-alias c='opencode'
-alias cx='printf "\033[2J\033[3J\033[H" && claude --permission-mode bypassPermissions'
+alias c='opencode2'
+alias cx='printf "\033[2J\033[3J\033[H" && claude'
 alias r='rails'
 alias t='tmux attach || tmux new -s Work'
 alias decompress='tar -xzf'
@@ -130,3 +139,4 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 source "$OMARCHY_PATH/default/bash/fns/compression"
 source "$OMARCHY_PATH/default/bash/fns/tmux"
 source "$OMARCHY_PATH/default/bash/fns/worktrees"
+export PATH="$HOME/.spin/bin:$PATH"

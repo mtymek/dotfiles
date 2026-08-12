@@ -7,7 +7,7 @@
       "command": [
         "mcp-atlassian-wrapper"
       ],
-      "enabled": false
+      "enabled": true
     }
   }
 }

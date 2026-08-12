@@ -1,0 +1,26 @@
+{
+  "tabs": [
+    {
+      "label": "Agent",
+      "root": {
+        "type": "split",
+        "direction": "right",
+        "ratio": 0.5,
+        "first": { "type": "pane", "agent": "${AGENT}" },
+        "second": { "type": "pane" }
+      }
+    },
+    {
+      "label": "nvim",
+      "root": {
+        "type": "pane",
+        "command": ["nvim", "."],
+        "env": { "GIT_CEILING_DIRECTORIES": "${WORKSPACE_PARENT}" }
+      }
+    },
+    {
+      "label": "server",
+      "root": { "type": "pane" }
+    }
+  ]
+}

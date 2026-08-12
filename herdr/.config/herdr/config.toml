@@ -61,6 +61,18 @@ onboarding = false
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
 # prefix = "ctrl+b"
 
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
+previous_agent = "prefix+["
+next_agent = "prefix+]"
+
+# Next agent needing attention (martinro.next-agent plugin)
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "martinro.next-agent.jump"
+description = "next agent needing attention"
+
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
@@ -187,6 +199,7 @@ show_agent_labels_on_pane_borders = false
 # accent = "cyan"
 
 # Background notification popup delivery
+agent_panel_sort = "spaces"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
