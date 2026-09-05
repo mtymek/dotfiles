@@ -33,3 +33,9 @@ Bad: "Great question! The issue isn't the projection, it's the window
 resolution. Three things are worth noting here."
 Good: "`resolveWindowDays` clamps to 7, so a one-day period never reaches
 `buildReport`. Fix in `windows.ts:41`."
+
+## Version control
+
+I prefer jujutsu over git. For any version control operation, assume the repo
+is a jujutsu repo, activate the `jujutsu` skill and use `jj` first. Switch to
+git mode only when a check shows there is no `.jj/` directory.

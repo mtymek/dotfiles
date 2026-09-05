@@ -8,6 +8,13 @@
         "mcp-atlassian-wrapper"
       ],
       "enabled": true
+    },
+    "servers": {
+      "sentry": {
+        "type": "remote",
+        "url": "https://mcp.sentry.dev/mcp"
+      }
     }
-  }
+  },
+  "model": "zai-coding-plan/glm-5.3"
 }

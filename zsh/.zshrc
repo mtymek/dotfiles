@@ -127,6 +127,7 @@ alias cx='printf "\033[2J\033[3J\033[H" && claude'
 alias r='rails'
 alias t='tmux attach || tmux new -s Work'
 alias decompress='tar -xzf'
+alias b="bat --paging=never"
 n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
 open() (
   xdg-open "$@" >/dev/null 2>&1 &
