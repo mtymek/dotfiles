@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync monstar font size from the Omarchy ghostty config
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/monstar-sync-from-ghostty

@@ -1,0 +1,22 @@
+# monstar, wired into Omarchy.
+#
+# Colors: theme points directly at Omarchy's live theme state file, which
+# `omarchy theme set` regenerates in place. The hook in
+# ~/.config/omarchy/hooks/theme-set.d/ SIGUSR1s monstar so running windows
+# reload it after a theme switch. Manual reload any time: Ctrl+Shift+,
+theme = /home/mat/.local/state/omarchy/current/theme/ghostty.conf
+
+# Font. The font-set hook keeps font-family in sync with `omarchy font set`,
+# and the monstar-sync.path systemd unit copies font-size over whenever
+# `omarchy display text size` rewrites the ghostty config.
+font-family = JetBrainsMono Nerd Font
+font-size = 9
+
+# Parity with the ghostty config: padding, translucency, scroll tuning.
+window-padding-x = 14
+window-padding-y = 14
+background-opacity = 0.9
+mouse-scroll-multiplier = 0.95
+
+# Same shell ghostty launches.
+command = direct:/usr/bin/zsh

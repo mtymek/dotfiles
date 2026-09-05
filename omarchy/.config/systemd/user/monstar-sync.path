@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch the ghostty config so monstar follows Omarchy text size changes
+
+[Path]
+PathChanged=%h/.config/ghostty/config
+Unit=monstar-sync.service
+
+[Install]
+WantedBy=default.target

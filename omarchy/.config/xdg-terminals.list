@@ -1,0 +1,10 @@
+# Terminal emulator preference order for xdg-terminal-exec
+# The first found and valid terminal will be used
+#
+# The first entry is a user copy of monstar's desktop entry whose id contains
+# "ghostty" purely so the packaged omarchy-launch-screensaver accepts it as the
+# default terminal and runs the real ghostty binary for the idle screensaver.
+# Everything else still opens monstar. See the Comment in the desktop file.
+dev.rockorager.monstar-ghostty.desktop
+dev.rockorager.monstar.desktop
+com.mitchellh.ghostty.desktop

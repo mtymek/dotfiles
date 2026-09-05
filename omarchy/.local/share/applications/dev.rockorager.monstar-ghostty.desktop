@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=monstar
+Comment=Wayland terminal emulator. This copy exists so monstar can be the Omarchy default terminal while the package-owned omarchy-launch-screensaver still accepts the default-terminal id: it substring-matches ghostty/alacritty/foot/kitty and then launches that binary directly for the screensaver.
+Icon=dev.rockorager.monstar
+Exec=monstar
+Terminal=false
+StartupNotify=true
+Categories=System;TerminalEmulator;
+X-TerminalArgExec=-e
+X-TerminalArgAppId=--app-id=
+X-TerminalArgTitle=--title=
+X-TerminalArgDir=--working-directory=
+X-TerminalArgHold=--hold

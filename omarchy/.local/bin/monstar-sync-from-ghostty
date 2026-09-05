@@ -1,0 +1,18 @@
+#!/bin/bash
+# Copy the font-size managed by `omarchy display text size` out of the ghostty
+# config into monstar's config, then reload running monstar instances.
+# Triggered by the monstar-sync.path systemd user unit whenever the ghostty
+# config changes. Family is deliberately not copied: omarchy font set and the
+# font-set hook own that.
+monstar_config="$HOME/.config/monstar/config"
+ghostty_config="$HOME/.config/ghostty/config"
+[[ -f $monstar_config && -f $ghostty_config ]] || exit 0
+
+pt=$(grep -oP '^font-size = \K[0-9.]+' "$ghostty_config" | head -1)
+[[ $pt =~ ^[0-9.]+$ ]] || exit 0
+
+current=$(grep -oP '^font-size = \K[0-9.]+' "$monstar_config" | head -1)
+[[ $current == "$pt" ]] && exit 0
+
+sed -i -E "s/^font-size = .*/font-size = $pt/" "$monstar_config"
+pkill -USR1 -x monstar 2>/dev/null || true
