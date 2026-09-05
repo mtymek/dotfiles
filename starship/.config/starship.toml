@@ -34,7 +34,7 @@ deleted    = ""
 [custom.jj]
 description = "The current jj status"
 when = "jj --ignore-working-copy root"
-symbol = "🥋 "
+symbol = "\uE725 "
 command = '''
 jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
   separate(" ",
@@ -42,10 +42,10 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
     bookmarks,
     "|",
     concat(
-      if(conflict, "💥"),
-      if(divergent, "🚧"),
-      if(hidden, "👻"),
-      if(immutable, "🔒"),
+      if(conflict, ""),
+      if(divergent, ""),
+      if(hidden, ""),
+      if(immutable, ""),
     ),
     raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
     raw_escape_sequence("\x1b[1;32m") ++ coalesce(
@@ -58,7 +58,7 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
 
 [hostname]
 ssh_only = false
-ssh_symbol = "🌐 "
+ssh_symbol = "\uF0AC "
 style = "bold blue"
 format = "[$ssh_symbol$hostname]($style) "
 
